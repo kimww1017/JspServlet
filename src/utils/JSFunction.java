@@ -64,4 +64,20 @@ public class JSFunction {
 		}
 		catch (Exception e) {}
 	}
+	
+	public static void alertOpenerReloadClose(HttpServletResponse resp, String msg) {
+		String str = "";
+		try {
+			//reload() : 부모페이지로 이동과 동시에 새로고침 해주는 메소드
+			resp.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = resp.getWriter();	
+			str = "<script>"
+					+ "  alert('"+msg+"');  "
+					+ "  opener.location.reload(); "
+					+ "	 self.close(); "
+					+ "</script>";
+			writer.print(str);
+		}
+		catch(Exception e) {}
+	} 
 }
